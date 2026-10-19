@@ -1,8 +1,10 @@
 name: Deploy to Cloudflare
 
+# 自動部署已改由 Cloudflare Dashboard 的 Git 整合負責（Workers Builds），
+# 這裡停用 push 自動觸發以避免重複部署，保留 workflow_dispatch 供手動測試/日後切回用。
 on:
-  push:
-    branches: [main]
+  # push:
+  #   branches: [main]
   workflow_dispatch:
 
 jobs:
