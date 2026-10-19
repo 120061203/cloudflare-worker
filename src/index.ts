@@ -5,6 +5,7 @@ const INACTIVITY_TIMEOUT_MS = 2 * 60 * 1000;
 
 interface Env {
 	FASTAPI_CONTAINER: DurableObjectNamespace<FastApiContainer>;
+	STAGE: string;
 }
 
 export class FastApiContainer extends DurableObject<Env> {
@@ -45,6 +46,9 @@ export class FastApiContainer extends DurableObject<Env> {
 				image: container.images.base,
 				instance: "lite",
 				enableInternet: false,
+				env: {
+					STAGE: this.env.STAGE,
+				},
 			});
 		}
 		this.observeExit();

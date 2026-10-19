@@ -7,6 +7,9 @@
 	"observability": {
 		"enabled": true
 	},
+	"vars": {
+		"STAGE": "dev"
+	},
 	"containers": [
 		{
 			"class_name": "FastApiContainer",
