@@ -1,0 +1,5 @@
+node_modules
+.wrangler
+.git
+__pycache__
+*.pyc

@@ -1,0 +1,36 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "fastapi-helloworld",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-10-08",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true
+	},
+	"containers": [
+		{
+			"class_name": "FastApiContainer",
+			"scheduling_policy": "durable_object",
+			"images": {
+				"base": {
+					"dockerfile": "./Dockerfile"
+				}
+			}
+		}
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"class_name": "FastApiContainer",
+				"name": "FASTAPI_CONTAINER"
+			}
+		]
+	},
+	"upload_source_maps": true,
+	"exports": {
+		"FastApiContainer": {
+			"type": "durable-object",
+			"storage": "sqlite"
+		}
+	}
+}
